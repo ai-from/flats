@@ -49,11 +49,10 @@
           {{flat.relationships.attributes.middle_name}}
           ({{ flat.relationships.type === 'agent' ? 'агент' : 'собственник' }})
         </div>
-        <div class="flats__item-like"
-             @click="flat.like = !flat.like"
-        >
+        <div class="flats__item-like">
           <div class="flats__item-heart"
                :class="flat.like ? 'active' : ''"
+               @click="flat.like = !flat.like"
           ></div>
         </div>
       </div>
