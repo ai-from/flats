@@ -1,0 +1,137 @@
+[v-cloak] {display: none;}
+
+* {box-sizing: border-box}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.flats {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.flats__title {
+  text-align: center;
+  color: #4169E1;
+  text-transform: uppercase;
+  font-size: 24px;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.flats__items {
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
+  justify-content: space-around;
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+}
+
+.flats__item {
+  border: 1px solid #8BA0E1;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+}
+
+.flats__item-title {
+  color: #4169E1;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.flats__item-address {
+  margin-bottom: 10px;
+}
+
+.flats__item-contact {
+  margin-bottom: 10px;
+}
+
+.flats__item-like {
+  display: grid;
+  justify-content: end;
+}
+
+/* heart */
+.flats__item-heart {
+  position: relative;
+  width: 20px;
+  height: 15px;
+  cursor: pointer;
+}
+.flats__item-heart:before,
+.flats__item-heart:after {
+  position: absolute;
+  content: "";
+  left: 10px;
+  top: 0;
+  width: 10px;
+  height: 15px;
+  background: grey;
+  -moz-border-radius: 50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform-origin: 0 100%;
+  -moz-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  -o-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+.flats__item-heart.active:before,
+.flats__item-heart.active:after {
+  background: red;
+}
+.flats__item-heart:after {
+  left: 0;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: 100% 100%;
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -o-transform-origin: 100% 100%;
+  transform-origin :100% 100%;
+}
+/* end of heart */
+
+/* loader */
+.loader{
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+svg path,
+svg rect{
+  fill: #4169E1;
+}
+
+.floats__loader {
+  text-align: center;
+}
+
+/* media */
+@media screen and (max-width: 1024px) {
+  .flats__items {
+    grid-template-columns: repeat(2, min-content);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .flats__items {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}

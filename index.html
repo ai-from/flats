@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Flats</title>
+</head>
+<body>
+
+  <div id="flats" class="flats" v-cloak>
+
+    <div class="flats__title">{{ title }}</div>
+
+    <div class="flats__items"
+         v-if="flats.length"
+    >
+
+      <div class="flats__item"
+           v-for="(flat, index) in flats"
+           :key="index"
+      >
+        <div class="flats__item-title">
+          {{ flat.attributes.title }}
+        </div>
+        <div class="flats__item-type">
+          Тип: {{ flat.type === 'flat' ? 'квартира' : 'студия' }}
+        </div>
+        <div class="flats__item-address">
+          Адрес:
+          {{ flat.attributes.address.city }},
+          {{ flat.attributes.address.street }},
+          {{ flat.attributes.address.house }},
+          {{ flat.attributes.address.room }}
+        </div>
+        <div class="flats__item-rooms">
+          Количество комнат: {{ flat.attributes.rooms }}
+        </div>
+        <div class="flats__item-area">
+          Общая площадь: {{ flat.attributes.area }} м<sup>2</sup>
+        </div>
+        <hr>
+        <div class="flats__item-contact">
+          Контактное лицо:
+          {{flat.relationships.attributes.last_name}}
+          {{flat.relationships.attributes.first_name}}
+          {{flat.relationships.attributes.middle_name}}
+          ({{ flat.relationships.type === 'agent' ? 'агент' : 'собственник' }})
+        </div>
+        <div class="flats__item-like"
+             @click="flat.like = !flat.like"
+        >
+          <div class="flats__item-heart"
+               :class="flat.like ? 'active' : ''"
+          ></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="floats__loader" v-else>
+      <div class="loader">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+          <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+            <animateTransform attributeType="xml"
+                              attributeName="transform"
+                              type="rotate"
+                              from="0 25 25"
+                              to="360 25 25"
+                              dur="0.6s"
+                              repeatCount="indefinite"/>
+          </path>
+        </svg>
+      </div>
+    </div>
+
+  </div> <!-- flats -->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
